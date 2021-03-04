@@ -64,7 +64,7 @@ namespace _079Evolution
                         if (!Pasivaa[ev.Player.Id.ToString()]) { ev.ReturnMessage = "Habilidad en cooldown"; return; }
                         if(ev.Player.Energy < 60 && ev.Player.Level < 2) { ev.ReturnMessage = "Necesitas Tier 2 y 60 de energia para usar este comando"; return; }
                         ev.ReturnMessage = "<i>Fakeando el spawn de chaos</i>";
-                        Cassie.Message("");
+                        Cassie.Message("pitch_0.5 .g3 .g3 . pitch_1 Danger . Danger . Unauthorized access detected at surface Gate A . All security units report to Entrance Zone in order to stop the intruders pitch_0.5 .g3");
                         Pasivaa[ev.Player.Id.ToString()] = false;
                         MEC.Timing.RunCoroutine(Cooldown0792(ev.Player));
                         break;
@@ -72,8 +72,10 @@ namespace _079Evolution
                         if (ev.Player.Role != RoleType.Scp079) { ev.ReturnMessage = "No puedes usar este comando si no eres SCP-079"; return; }
                         if (!Pasivaa[ev.Player.Id.ToString()]) { ev.ReturnMessage = "Habilidad en cooldown"; return; }
                         if (ev.Player.Energy < 60 && ev.Player.Level < 2) { ev.ReturnMessage = "Necesitas Tier 2 y 60 de energia para usar este comando"; return; }
+                        IEnumerable<Player> spcs = Player.List.Where(x => x.Team == Team.SCP);
+                        List<Player> plList = spcs.ToList();
                         ev.ReturnMessage = "<i>Fakeando el spawn de mtf</i>";
-                        Cassie.Message("");
+                        Cassie.Message($"pitch_0.3 .g3 .g3 . pitch_1 Attention all Foundation personnel . MtfUnit Epsilon 11 designated Nato_A 1 hasentered .  AllRemaining AwaitingRecontainment {plList.Count} SCPsubjects .");
                         Pasivaa[ev.Player.Id.ToString()] = false;
                         MEC.Timing.RunCoroutine(Cooldown0792(ev.Player));
                         break;
