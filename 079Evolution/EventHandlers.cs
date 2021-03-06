@@ -84,7 +84,7 @@ namespace _079Evolution
                     case "chaos":
                         if (ev.Player.Role != RoleType.Scp079) { ev.ReturnMessage = "No puedes usar este comando si no eres SCP-079"; return; }
                         if (!Coold) { ev.ReturnMessage = "Habilidad en cooldown"; return; }
-                        if (ev.Player.Level < 2) { ev.ReturnMessage = "Necesitas ser Tier 2 para usar este comando"; return; }
+                        if (ev.Player.Level < 1) { ev.ReturnMessage = "Necesitas ser Tier 2 para usar este comando"; return; }
                         if (ev.Player.Energy < 60) { ev.ReturnMessage = "Necesitas 60 de energia para usar este comando"; return; }
                         ev.ReturnMessage = "<i>Fakeando el spawn de chaos</i>";
                         Cassie.Message("pitch_0.5 .g3 .g3 . pitch_1 Danger . Danger . Unauthorized access detected at surface Gate A . All security units report to Entrance Zone in order to stop the intruders pitch_0.5 .g3");
@@ -96,7 +96,7 @@ namespace _079Evolution
                     case "mtf":
                         if (ev.Player.Role != RoleType.Scp079) { ev.ReturnMessage = "No puedes usar este comando si no eres SCP-079"; return; }
                         if (!Coold) { ev.ReturnMessage = "Habilidad en cooldown"; return; }
-                        if (ev.Player.Level < 2) { ev.ReturnMessage = "Necesitas ser Tier 2 para usar este comando"; return; }
+                        if (ev.Player.Level < 1) { ev.ReturnMessage = "Necesitas ser Tier 2 para usar este comando"; return; }
                         if (ev.Player.Energy < 60) { ev.ReturnMessage = "Necesitas 60 de energia para usar este comando"; return; }
                         IEnumerable<Player> spcs = Player.List.Where(x => x.Team == Team.SCP);
                         List<Player> plList = spcs.ToList();
@@ -111,7 +111,7 @@ namespace _079Evolution
                         if (ev.Player.Role != RoleType.Scp079) { ev.ReturnMessage = "No puedes usar este comando si no eres SCP-079"; return; }
                         if (!Cooldw) { ev.ReturnMessage = "Habilidad en cooldown"; return; }
                         //if (ev.Player.Energy < 100 || ev.Player.Level < 3) { ev.ReturnMessage = "Necesitas Tier 3 y 100 de energia para usar este comando"; return; }
-                        if(ev.Player.Level < 3) { ev.ReturnMessage = "Necesitas ser Tier 3 para usar este comando"; return; }
+                        if(ev.Player.Level < 2) { ev.ReturnMessage = "Necesitas ser Tier 3 para usar este comando"; return; }
                         if(ev.Player.Energy < 100) { ev.ReturnMessage = "Necesitas 100 de energia para usar este comando"; return; }
                         //adas
                         Cassie.Message("pitch_0.5 .g3 .g3 .g3 pitch_1 Danger . SCP 0 7 9 Will turn off the light system in 3 . 2 . 1 ");
