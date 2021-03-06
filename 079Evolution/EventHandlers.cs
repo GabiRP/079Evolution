@@ -11,7 +11,7 @@ namespace _079Evolution
 {
     public class EventHandlers
     {
-        private Plugin plugin;
+        private readonly Plugin plugin;
         public EventHandlers(Plugin plugin) => this.plugin = plugin;
         bool Coold = true;
         bool Cooldw = true;
@@ -32,7 +32,19 @@ namespace _079Evolution
             Cooldw = true;
         }
 
-
+        internal void OnRolChange(ChangingRoleEventArgs ev)
+        {
+            if(ev.NewRole == RoleType.Scp079)
+            {
+                ev.Player.Broadcast(5, "<color=yellow>Ahora como SCP-079 tienes comandos! para mirarlos, solo usa la consola del juego (ñ). Ahí tendras la lista de comandos que puedes usar.</color>");
+                ev.Player.SendConsoleMessage("Ayuda", "yellow");
+                ev.Player.SendConsoleMessage(".079 help/? muestra este mensaje", "yellow");
+                ev.Player.SendConsoleMessage(".079 suicide te lleva al expectador (solo si no quedan SCPs)", "yellow");
+                ev.Player.SendConsoleMessage(".079 chaos manda un mensaje fake del cassie (spawn de chaos) (Nivel 2 Energia 60) Cooldown: 60sec", "yellow");
+                ev.Player.SendConsoleMessage(".079 mtf manda un mensaje fake del cassie (spawn de mtf) (Nivel 2 Energia 60) Cooldown: 60sec", "yellow");
+                ev.Player.SendConsoleMessage(".079 blackout apaga las luces de todas las instalaciones durante 8 segundos (Nivel 3 Energia 100) Cooldown: 120sec", "yellow");
+            }
+        }
         internal void OnConsoleCommand(SendingConsoleCommandEventArgs ev)
         {
             if(ev.Name == "079")
@@ -42,8 +54,9 @@ namespace _079Evolution
                     ev.Player.SendConsoleMessage("Ayuda", "yellow");
                     ev.Player.SendConsoleMessage(".079 help/? muestra este mensaje", "yellow");
                     ev.Player.SendConsoleMessage(".079 suicide te lleva al expectador (solo si no quedan SCPs)", "yellow");
-                    ev.Player.SendConsoleMessage(".079 chaos manda un mensaje fake del cassie (spawn de chaos)", "yellow");
-                    ev.Player.SendConsoleMessage(".079 mtf manda un mensaje fake del cassie (spawn de mtf)", "yellow");
+                    ev.Player.SendConsoleMessage(".079 chaos manda un mensaje fake del cassie (spawn de chaos) (Nivel 2 Energia 60) Cooldown: 60sec", "yellow");
+                    ev.Player.SendConsoleMessage(".079 mtf manda un mensaje fake del cassie (spawn de mtf) (Nivel 2 Energia 60) Cooldown: 60sec", "yellow");
+                    ev.Player.SendConsoleMessage(".079 blackout apaga las luces de todas las instalaciones durante 8 segundos (Nivel 3 Energia 100) Cooldown: 120sec", "yellow");
                     return;
                 }
                 switch (ev.Arguments[0])
@@ -71,7 +84,8 @@ namespace _079Evolution
                     case "chaos":
                         if (ev.Player.Role != RoleType.Scp079) { ev.ReturnMessage = "No puedes usar este comando si no eres SCP-079"; return; }
                         if (!Coold) { ev.ReturnMessage = "Habilidad en cooldown"; return; }
-                        if(ev.Player.Energy < 60 || ev.Player.Level < 2) { ev.ReturnMessage = "Necesitas Tier 2 y 60 de energia para usar este comando"; return; }
+                        if (ev.Player.Level < 2) { ev.ReturnMessage = "Necesitas ser Tier 2 para usar este comando"; return; }
+                        if (ev.Player.Energy < 60) { ev.ReturnMessage = "Necesitas 60 de energia para usar este comando"; return; }
                         ev.ReturnMessage = "<i>Fakeando el spawn de chaos</i>";
                         Cassie.Message("pitch_0.5 .g3 .g3 . pitch_1 Danger . Danger . Unauthorized access detected at surface Gate A . All security units report to Entrance Zone in order to stop the intruders pitch_0.5 .g3");
                         Coold = false;
@@ -82,7 +96,8 @@ namespace _079Evolution
                     case "mtf":
                         if (ev.Player.Role != RoleType.Scp079) { ev.ReturnMessage = "No puedes usar este comando si no eres SCP-079"; return; }
                         if (!Coold) { ev.ReturnMessage = "Habilidad en cooldown"; return; }
-                        if (ev.Player.Energy < 60 || ev.Player.Level < 2) { ev.ReturnMessage = "Necesitas Tier 2 y 60 de energia para usar este comando"; return; }
+                        if (ev.Player.Level < 2) { ev.ReturnMessage = "Necesitas ser Tier 2 para usar este comando"; return; }
+                        if (ev.Player.Energy < 60) { ev.ReturnMessage = "Necesitas 60 de energia para usar este comando"; return; }
                         IEnumerable<Player> spcs = Player.List.Where(x => x.Team == Team.SCP);
                         List<Player> plList = spcs.ToList();
                         ev.ReturnMessage = "<i>Fakeando el spawn de mtf</i>";
@@ -95,7 +110,9 @@ namespace _079Evolution
                     case "blackout":
                         if (ev.Player.Role != RoleType.Scp079) { ev.ReturnMessage = "No puedes usar este comando si no eres SCP-079"; return; }
                         if (!Cooldw) { ev.ReturnMessage = "Habilidad en cooldown"; return; }
-                        if (ev.Player.Energy < 100 || ev.Player.Level < 3) { ev.ReturnMessage = "Necesitas Tier 3 y 100 de energia para usar este comando"; return; }
+                        //if (ev.Player.Energy < 100 || ev.Player.Level < 3) { ev.ReturnMessage = "Necesitas Tier 3 y 100 de energia para usar este comando"; return; }
+                        if(ev.Player.Level < 3) { ev.ReturnMessage = "Necesitas ser Tier 3 para usar este comando"; return; }
+                        if(ev.Player.Energy < 100) { ev.ReturnMessage = "Necesitas 100 de energia para usar este comando"; return; }
                         //adas
                         Cassie.Message("pitch_0.5 .g3 .g3 .g3 pitch_1 Danger . SCP 0 7 9 Will turn off the light system in 3 . 2 . 1 ");
                         Timing.CallDelayed(10f, () => { Map.TurnOffAllLights(8f); });

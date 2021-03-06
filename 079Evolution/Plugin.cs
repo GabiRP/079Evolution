@@ -18,11 +18,13 @@ namespace _079Evolution
             base.OnEnabled();
             EventHandlers = new EventHandlers(this);
             Server.SendingConsoleCommand += EventHandlers.OnConsoleCommand;
+            Player.ChangingRole += EventHandlers.OnRolChange;
         }
         public override void OnDisabled()
         {
             base.OnDisabled();
             Server.SendingConsoleCommand -= EventHandlers.OnConsoleCommand;
+            Player.ChangingRole -= EventHandlers.OnRolChange;
             EventHandlers = null;
         }
     }
