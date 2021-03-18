@@ -74,6 +74,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\079.cs" />
+    <Compile Include="Commands\SubCommands\Blackout.cs" />
+    <Compile Include="Commands\SubCommands\Chaos.cs" />
+    <Compile Include="Commands\SubCommands\MTF.cs" />
+    <Compile Include="Commands\SubCommands\Suicide.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="EventHandlers.cs" />
@@ -82,5 +87,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
