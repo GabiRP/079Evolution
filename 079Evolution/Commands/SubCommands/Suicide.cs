@@ -26,7 +26,7 @@ namespace _079Evolution.Commands.SubCommands
             List<Player> pList = enumerable.ToList();
             if (pList.Count != 1 && pList[0].Role != RoleType.Scp079)
             {
-                response = "Todavia quedan otros scps";
+                response = "Todavía quedan otros scps";
                 return false;
             }
             Player player = pList[0];

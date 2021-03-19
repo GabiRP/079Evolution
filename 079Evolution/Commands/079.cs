@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _079Evolution.Commands.SubCommands;
 using Exiled.API.Features;
 
 namespace _079Evolution.Commands
@@ -18,7 +19,10 @@ namespace _079Evolution.Commands
 
         public override void LoadGeneratedCommands()
         {
-            
+            RegisterCommand(new Suicide());
+            RegisterCommand(new Mtf());
+            RegisterCommand(new Blackout());
+            RegisterCommand(new Chaos());
         }
 
         protected override bool ExecuteParent(ArraySegment<string> arguments, ICommandSender sender, out string response)

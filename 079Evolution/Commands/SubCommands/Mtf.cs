@@ -8,13 +8,13 @@ using Exiled.API.Features;
 
 namespace _079Evolution.Commands.SubCommands
 {
-    public class Chaos : ICommand
+    public class Mtf : ICommand
     {
-        public string Command { get; } = "chaos";
+        public string Command { get; } = "mtf";
 
-        public string[] Aliases { get; } = {"chaos"};
+        public string[] Aliases { get; } = {"mtf"};
 
-        public string Description { get; } = "Fakes chaos spawn";
+        public string Description { get; } = "Turns SCP-079 into a spectator";
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
@@ -29,12 +29,12 @@ namespace _079Evolution.Commands.SubCommands
             if (player.Level < 1) { response = "Necesitas ser Tier 2 para usar este comando"; return false; }
             if (player.Energy < 60) { response = "Necesitas 60 de energia para usar este comando"; return false; }
             
-            Cassie.Message("pitch_0.5 .g3 .g3 . pitch_1 Danger . Danger . Unauthorized access detected at surface Gate A . All security units report to Entrance Zone in order to stop the intruders pitch_0.5 .g3");
+            Cassie.Message("pitch_0.3 .g3 .g3 . pitch_1 MtfUnit Alpha 1 designated Red Right Hand hasentered .  O5 personnel please proceed to the helicopter . ");
             EventHandlers.Coold = false;
             int p = (int)System.Environment.OSVersion.Platform;
             if ((p == 4) || (p == 6) || (p == 128)) MEC.Timing.RunCoroutine(EventHandlers.Cooldown0792(player), MEC.Segment.Update);
             else MEC.Timing.RunCoroutine(EventHandlers.Cooldown0792(player), 1);
-            response = "<i>Fakeando el spawn de Chaos</i>";
+            response = "<i>Fakeando el spawn de MTF</i>";
             return true;
         }
     }

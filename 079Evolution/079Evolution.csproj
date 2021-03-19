@@ -77,7 +77,7 @@
     <Compile Include="Commands\079.cs" />
     <Compile Include="Commands\SubCommands\Blackout.cs" />
     <Compile Include="Commands\SubCommands\Chaos.cs" />
-    <Compile Include="Commands\SubCommands\MTF.cs" />
+    <Compile Include="Commands\SubCommands\Mtf.cs" />
     <Compile Include="Commands\SubCommands\Suicide.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Config.cs" />

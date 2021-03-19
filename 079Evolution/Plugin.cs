@@ -11,19 +11,17 @@ namespace _079Evolution
 {
     public class Plugin : Plugin<Config>
     {
-        public Plugin plugin;
+        public static Plugin plugin;
         private EventHandlers EventHandlers;
         public override void OnEnabled()
         {
             base.OnEnabled();
             EventHandlers = new EventHandlers(this);
-            Server.SendingConsoleCommand += EventHandlers.OnConsoleCommand;
             Player.ChangingRole += EventHandlers.OnRolChange;
         }
         public override void OnDisabled()
         {
             base.OnDisabled();
-            Server.SendingConsoleCommand -= EventHandlers.OnConsoleCommand;
             Player.ChangingRole -= EventHandlers.OnRolChange;
             EventHandlers = null;
         }
