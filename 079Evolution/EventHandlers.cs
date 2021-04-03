@@ -1,9 +1,5 @@
 ﻿using Exiled.API.Features;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Exiled.Events.EventArgs;
 using MEC;
 
@@ -36,13 +32,8 @@ namespace _079Evolution
         {
             if(ev.NewRole == RoleType.Scp079)
             {
-                ev.Player.Broadcast(5, "<color=yellow>Ahora como SCP-079 tienes comandos! para mirarlos, solo usa la consola del juego (ñ). Ahí tendras la lista de comandos que puedes usar.</color>");
-                ev.Player.SendConsoleMessage("Ayuda", "yellow");
-                ev.Player.SendConsoleMessage(".079 help/? muestra este mensaje", "yellow");
-                ev.Player.SendConsoleMessage(".079 suicide te lleva al expectador (solo si no quedan SCPs)", "yellow");
-                ev.Player.SendConsoleMessage(".079 chaos manda un mensaje fake del cassie (spawn de chaos) (Nivel 2 Energia 60) Cooldown: 60sec", "yellow");
-                ev.Player.SendConsoleMessage(".079 mtf manda un mensaje fake del cassie (spawn de mtf) (Nivel 2 Energia 60) Cooldown: 60sec", "yellow");
-                ev.Player.SendConsoleMessage(".079 blackout apaga las luces de todas las instalaciones durante 8 segundos (Nivel 3 Energia 100) Cooldown: 120sec", "yellow");
+                ev.Player.Broadcast(plugin.Config.BroadcastDuration, plugin.Config.SpawnBroadcast);
+                ev.Player.SendConsoleMessage(ev.Player, plugin.Config.SpawnCmdMsg, plugin.Config.CmdColor);
             }
         }
         

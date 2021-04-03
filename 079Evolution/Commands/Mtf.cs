@@ -8,7 +8,7 @@ using Exiled.API.Features;
 
 namespace _079Evolution.Commands.SubCommands
 {
-    public class Mtf : ICommand
+    class Mtf : ICommand
     {
         public string Command { get; } = "mtf";
 
@@ -34,7 +34,7 @@ namespace _079Evolution.Commands.SubCommands
             int p = (int)System.Environment.OSVersion.Platform;
             if ((p == 4) || (p == 6) || (p == 128)) MEC.Timing.RunCoroutine(EventHandlers.Cooldown0792(player), MEC.Segment.Update);
             else MEC.Timing.RunCoroutine(EventHandlers.Cooldown0792(player), 1);
-            response = "<i>Fakeando el spawn de MTF</i>";
+            response = Plugin.plugin.Config.MtfMsg;
             return true;
         }
     }

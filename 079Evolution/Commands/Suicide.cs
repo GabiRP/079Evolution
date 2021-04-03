@@ -6,7 +6,7 @@ using Exiled.API.Features;
 
 namespace _079Evolution.Commands.SubCommands
 {
-    public class Suicide : ICommand
+    class Suicide : ICommand
     {
         public string Command { get; } = "suicide";
 
@@ -31,7 +31,7 @@ namespace _079Evolution.Commands.SubCommands
             }
             Player player = pList[0];
             player.SetRole(RoleType.Spectator);
-            response = "<i>Mandandote a espectador</i>";
+            response = Plugin.plugin.Config.SuicideMsg;
             return true;
 
         }
