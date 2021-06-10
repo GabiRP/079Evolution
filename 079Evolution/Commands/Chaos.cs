@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using CommandSystem;
 using Exiled.API.Features;
 
-namespace _079Evolution.Commands.SubCommands
+namespace _079Evolution.Commands
 {
-    class Chaos : ICommand
+    public class Chaos : ICommand
     {
         public string Command { get; } = "chaos";
 
@@ -21,15 +21,16 @@ namespace _079Evolution.Commands.SubCommands
             Player player = Player.Get((CommandSender) sender);
             if (player.Role != RoleType.Scp079)
             {
-                response = "Tienes que ser SCP-079 para poder usar este comando";
+                response = Plugin.plugin.Config.NoRole;
                 return false;
             }
             if (player.Role != RoleType.Scp079) { response = "No puedes usar este comando si no eres SCP-079"; return false; }
-            if (!EventHandlers.Cooldw) { response = "Habilidad en cooldown"; return false; }
+            if (!EventHandlers.Cooldw) { response = Plugin.plugin.Config.Cooldown; return false; }
             if (player.Level < 1) { response = "Necesitas ser Tier 2 para usar este comando"; return false; }
             if (player.Energy < 60) { response = "Necesitas 60 de energia para usar este comando"; return false; }
             
             Cassie.Message("pitch_0.5 .g3 .g3 . pitch_1 Danger . Danger . Unauthorized access detected at surface Gate A . All security units report to Entrance Zone in order to stop the intruders pitch_0.5 .g3");
+            player.Energy -= 60;
             EventHandlers.Coold = false;
             int p = (int)System.Environment.OSVersion.Platform;
             if ((p == 4) || (p == 6) || (p == 128)) MEC.Timing.RunCoroutine(EventHandlers.Cooldown0792(player), MEC.Segment.Update);

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Exiled.API.Features;
 
-namespace _079Evolution.Commands.SubCommands
+namespace _079Evolution.Commands
 {
-    class Suicide : ICommand
+    public class Suicide : ICommand
     {
         public string Command { get; } = "suicide";
 
@@ -19,12 +19,12 @@ namespace _079Evolution.Commands.SubCommands
             Player ply = Player.Get((CommandSender)sender);
             if (ply.Role != RoleType.Scp079)
             {
-                response = "Tienes que ser SCP-079 para utilizar este comando";
+                response = Plugin.plugin.Config.NoRole;
                 return false;
             }
             IEnumerable<Player> enumerable = Player.List.Where(x => x.Team == Team.SCP);
             List<Player> pList = enumerable.ToList();
-            if (pList.Count != 1 && pList[0].Role != RoleType.Scp079)
+            if (pList.Count == 1 && pList[0].Role != RoleType.Scp079)
             {
                 response = "Todavía quedan otros scps";
                 return false;

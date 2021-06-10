@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Exiled.Events.EventArgs;
 using MEC;
+using Respawning;
 
 namespace _079Evolution
 {
@@ -33,7 +34,15 @@ namespace _079Evolution
             if(ev.NewRole == RoleType.Scp079)
             {
                 ev.Player.Broadcast(plugin.Config.BroadcastDuration, plugin.Config.SpawnBroadcast);
-                ev.Player.SendConsoleMessage(ev.Player, plugin.Config.SpawnCmdMsg, plugin.Config.CmdColor);
+                ev.Player.SendConsoleMessage(ev.Player, plugin.Config.SpawnCmdMsg, "yellow");
+            }
+        }
+
+        internal void OnSpawningTeam(RespawningTeamEventArgs ev)
+        {
+            if (ev.NextKnownTeam == SpawnableTeamType.ChaosInsurgency)
+            {
+                Cassie.Message("pitch_0.5 .g3 .g3 . pitch_1 Danger . Danger . Unauthorized access detected at surface Gate A . All security units report to Entrance Zone in order to stop the intruders pitch_0.5 .g3");
             }
         }
         
