@@ -27,7 +27,7 @@ namespace _079Evolution.Commands
             //Event
             player.Energy -= 100;
             EventHandlers.Cooldw = false;
-
+            Log.Debug("Running Blackout coroutine", Plugin.plugin.Config.DebugEnabled);
             Timing.RunCoroutine(BOut());
             
             
