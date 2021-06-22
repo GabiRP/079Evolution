@@ -15,14 +15,14 @@ namespace _079Evolution
 
 
         // cooldown de habilidad
-        public static IEnumerator<float> Cooldown0792(Player player)
+        public static IEnumerator<float> Cooldown0792()
         {
 
             yield return Timing.WaitForSeconds(60f);
             Coold = true;
 
         }
-        public static IEnumerator<float> Cooldown0793(Player player)
+        public static IEnumerator<float> Cooldown0793()
         {
 
             yield return Timing.WaitForSeconds(120f);
@@ -33,8 +33,8 @@ namespace _079Evolution
         {
             if(ev.NewRole == RoleType.Scp079)
             {
-                ev.Player.Broadcast(plugin.Config.BroadcastDuration, plugin.Config.SpawnBroadcast);
-                ev.Player.SendConsoleMessage(ev.Player, plugin.Config.SpawnCmdMsg, "yellow");
+                ev.Player.Broadcast(plugin.Config.BroadcastDuration, plugin.Config.PluginTranslations.SpawnBroadcast);
+                ev.Player.SendConsoleMessage(ev.Player, plugin.Config.PluginTranslations.CmdMsg, "yellow");
             }
         }
 

@@ -29,7 +29,7 @@ namespace _079Evolution.Commands
 
         protected override bool ExecuteParent(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
-            response = Plugin.plugin.Config.BadCommandMsg;
+            response = Plugin.plugin.Config.PluginTranslations.CmdMsg;
             return false;
         }
     }
@@ -41,11 +41,11 @@ namespace _079Evolution.Commands
             Player ply = Player.Get(sender as CommandSender);
             if (ply.Role == RoleType.Scp079)
             {
-                response = Plugin.plugin.Config.BadCommandMsg;
+                response = Plugin.plugin.Config.PluginTranslations.CmdMsg;
                 return true;
             }
 
-            response = Plugin.plugin.Config.NoRole;
+            response = Plugin.plugin.Config.PluginTranslations.NoRole;
             return false;
         }
 

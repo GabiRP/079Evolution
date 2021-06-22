@@ -19,20 +19,21 @@ namespace _079Evolution.Commands
             Player ply = Player.Get((CommandSender)sender);
             if (ply.Role != RoleType.Scp079)
             {
-                response = Plugin.plugin.Config.NoRole;
+                response = Plugin.plugin.Config.PluginTranslations.NoRole;
                 return false;
             }
             IEnumerable<Player> enumerable = Player.List.Where(x => x.Team == Team.SCP);
             List<Player> pList = enumerable.ToList();
-            if (pList.Count == 1 && pList[0].Role != RoleType.Scp079)
+            if (pList.Count == 1 && pList[0].Role == RoleType.Scp079)
             {
-                response = "Todavía quedan otros scps";
-                return false;
+                Player player = pList[0];
+                player.SetRole(RoleType.Spectator);
+                response = Plugin.plugin.Config.PluginTranslations.SuicideMsg;
+                return true;
             }
-            Player player = pList[0];
-            player.SetRole(RoleType.Spectator);
-            response = Plugin.plugin.Config.SuicideMsg;
-            return true;
+
+            response = "Todavía quedan otros SCPs";
+            return false;
 
         }
     }
