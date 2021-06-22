@@ -16,9 +16,11 @@ namespace _079Evolution.Commands
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
+            Log.Debug("Suicide command executed", Plugin.plugin.Config.DebugEnabled);
             Player ply = Player.Get((CommandSender)sender);
             if (ply.Role != RoleType.Scp079)
             {
+                Log.Debug("The player is not SCP-079", Plugin.plugin.Config.DebugEnabled);
                 response = Plugin.plugin.Config.PluginTranslations.NoRole;
                 return false;
             }
@@ -26,13 +28,14 @@ namespace _079Evolution.Commands
             List<Player> pList = enumerable.ToList();
             if (pList.Count == 1 && pList[0].Role == RoleType.Scp079)
             {
+                Log.Debug("There's no more SCPs, sending SCP-079 to spectator", Plugin.plugin.Config.DebugEnabled);
                 Player player = pList[0];
                 player.SetRole(RoleType.Spectator);
                 response = Plugin.plugin.Config.PluginTranslations.SuicideMsg;
                 return true;
             }
-
-            response = "Todavía quedan otros SCPs";
+            Log.Debug("There's other SCPs, sending error message", Plugin.plugin.Config.DebugEnabled);
+            response = Plugin.plugin.Config.PluginTranslations.OtherScps;
             return false;
 
         }

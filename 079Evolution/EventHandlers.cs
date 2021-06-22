@@ -14,10 +14,9 @@ namespace _079Evolution
         public static bool Cooldw = true;
 
 
-        // cooldown de habilidad
+       
         public static IEnumerator<float> Cooldown0792()
         {
-
             yield return Timing.WaitForSeconds(60f);
             Coold = true;
 
@@ -33,6 +32,7 @@ namespace _079Evolution
         {
             if(ev.NewRole == RoleType.Scp079)
             {
+                Log.Debug("Sending Broadcast and Console message to SCP-079", plugin.Config.DebugEnabled); 
                 ev.Player.Broadcast(plugin.Config.BroadcastDuration, plugin.Config.PluginTranslations.SpawnBroadcast);
                 ev.Player.SendConsoleMessage(ev.Player, plugin.Config.PluginTranslations.CmdMsg, "yellow");
             }
@@ -40,9 +40,15 @@ namespace _079Evolution
 
         internal void OnSpawningTeam(RespawningTeamEventArgs ev)
         {
+            if (!plugin.Config.ChaosSpawnCassie)
+            {
+                Log.Debug("Chaos spawn cassie is not enabled, returning", plugin.Config.DebugEnabled); 
+                return;
+            }
             if (ev.NextKnownTeam == SpawnableTeamType.ChaosInsurgency)
             {
-                Cassie.Message("pitch_0.5 .g3 .g3 . pitch_1 Danger . Danger . Unauthorized access detected at surface Gate A . All security units report to Entrance Zone in order to stop the intruders pitch_0.5 .g3");
+                Log.Debug("Chaos spawn cassie is enabled, sending message", plugin.Config.DebugEnabled); 
+                Cassie.Message(plugin.Config.ChaosCassie);
             }
         }
         

@@ -41,16 +41,17 @@ namespace _079Evolution.Commands
             Player ply = Player.Get(sender as CommandSender);
             if (ply.Role == RoleType.Scp079)
             {
+                Log.Debug("Sending help message to player", Plugin.plugin.Config.DebugEnabled);
                 response = Plugin.plugin.Config.PluginTranslations.CmdMsg;
                 return true;
             }
-
+            Log.Debug("Player is not SCP-079, sending error message", Plugin.plugin.Config.DebugEnabled);
             response = Plugin.plugin.Config.PluginTranslations.NoRole;
             return false;
         }
 
         public string Command { get; } = "help";
-        public string[] Aliases { get; } = {"ayuda", "?"};
+        public string[] Aliases { get; } = {"?"};
         public string Description { get; } = "Help command";
     }
 }

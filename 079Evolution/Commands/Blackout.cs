@@ -13,6 +13,8 @@ namespace _079Evolution.Commands
     {
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
+            Log.Debug("Blackout command executed", Plugin.plugin.Config.DebugEnabled);
+            
             Player player = Player.Get((CommandSender)sender);
             //Role, cooldown & Level/Energy Check
             if (player.Role != RoleType.Scp079) { response = Plugin.plugin.Config.PluginTranslations.NoRole; return false; }
