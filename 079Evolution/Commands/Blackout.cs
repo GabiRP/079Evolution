@@ -20,8 +20,8 @@ namespace _079Evolution.Commands
             if (player.Role != RoleType.Scp079) { response = Plugin.plugin.Config.PluginTranslations.NoRole; return false; }
             if (!EventHandlers.Cooldw) { response = Plugin.plugin.Config.PluginTranslations.Cooldown; return false; }
             //if (ev.Player.Energy < 100 || ev.Player.Level < 3) { ev.ReturnMessage = "Necesitas Tier 3 y 100 de energia para usar este comando"; return; }
-            if(player.Level < 2) { response = "Necesitas ser Tier 3 para usar este comando"; return false;  }
-            if(player.Energy < 100) { response = "Necesitas 100 de energia para usar este comando"; return false; }
+            if(player.Level < 2) { response = Plugin.plugin.Config.PluginTranslations.LvlEnergyMsg; return false;  }
+            if(player.Energy < 100) { response = Plugin.plugin.Config.PluginTranslations.LvlEnergyMsg; return false; }
             //Response
             response = Plugin.plugin.Config.PluginTranslations.BlackoutMsg;
             //Event
@@ -39,7 +39,7 @@ namespace _079Evolution.Commands
 
         private IEnumerator<float> BOut()
         {
-            Cassie.Message("pitch_0.5 .g3 .g3 .g3 pitch_1 Danger . SCP 0 7 9 Will turn off the light system in 3 . 2 . 1 ");
+            Cassie.Message(Plugin.plugin.Config.BlackoutCassie);
             yield return Timing.WaitForSeconds(13f);
             Map.TurnOffAllLights(Plugin.plugin.Config.BlackoutTime);
         }

@@ -29,6 +29,9 @@ namespace _079Evolution
         public string ChaosCassie { get; set; } =
             "pitch_0.5 .g3 .g3 . pitch_1 Danger . Danger . Unauthorized access detected at surface Gate A . All security units report to Entrance Zone in order to stop the intruders pitch_0.5 .g3";
 
+        [Description("Blackout Cassie")]
+        public string BlackoutCassie { get; set; } =
+            "pitch_0.5 .g3 .g3 .g3 pitch_1 Danger . SCP 0 7 9 Will turn off the light system in 3 . 2 . 1 ";
         [Description("Do you want a chaos spawning cassie?")]
         public bool ChaosSpawnCassie { get; set; } = true;
 
