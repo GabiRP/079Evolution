@@ -26,7 +26,7 @@ namespace _079Evolution.Commands
                 return false;
             }
             if (player.Role != RoleType.Scp079) { response = "No puedes usar este comando si no eres SCP-079"; return false; }
-            if (!EventHandlers.Cooldw) { response = Plugin.plugin.Config.PluginTranslations.Cooldown; return false; }
+            if (!EventHandlers.Coold) { response = Plugin.plugin.Config.PluginTranslations.Cooldown; return false; }
 
             if (player.Level < 1) { response = Plugin.plugin.Config.PluginTranslations.LvlEnergyMsg; return false; }
             if (player.Energy < 60) { response = Plugin.plugin.Config.PluginTranslations.LvlEnergyMsg; return false; }
