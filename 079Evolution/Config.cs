@@ -36,7 +36,7 @@ namespace _079Evolution
         public bool ChaosSpawnCassie { get; set; } = true;
 
         [Description("Plugin translations")] 
-        public Translations PluginTranslations = new Translations();
+        public Translations Translations = new Translations();
 
     }
 }

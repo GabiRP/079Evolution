@@ -33,8 +33,8 @@ namespace _079Evolution
             if(ev.NewRole == RoleType.Scp079)
             {
                 Log.Debug("Sending Broadcast and Console message to SCP-079", plugin.Config.DebugEnabled); 
-                ev.Player.Broadcast(plugin.Config.BroadcastDuration, plugin.Config.PluginTranslations.SpawnBroadcast);
-                ev.Player.SendConsoleMessage(ev.Player, plugin.Config.PluginTranslations.CmdMsg, "yellow");
+                ev.Player.Broadcast(plugin.Config.BroadcastDuration, plugin.Config.Translations.SpawnBroadcast);
+                ev.Player.SendConsoleMessage(ev.Player, plugin.Config.Translations.CmdMsg, "yellow");
             }
         }
 

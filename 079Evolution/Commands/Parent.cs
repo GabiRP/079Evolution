@@ -29,7 +29,7 @@ namespace _079Evolution.Commands
 
         protected override bool ExecuteParent(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
-            response = Plugin.plugin.Config.PluginTranslations.CmdMsg;
+            response = Plugin.plugin.Config.Translations.CmdMsg;
             return false;
         }
     }
@@ -42,11 +42,11 @@ namespace _079Evolution.Commands
             if (ply.Role == RoleType.Scp079)
             {
                 Log.Debug("Sending help message to player", Plugin.plugin.Config.DebugEnabled);
-                response = Plugin.plugin.Config.PluginTranslations.CmdMsg;
+                response = Plugin.plugin.Config.Translations.CmdMsg;
                 return true;
             }
             Log.Debug("Player is not SCP-079, sending error message", Plugin.plugin.Config.DebugEnabled);
-            response = Plugin.plugin.Config.PluginTranslations.NoRole;
+            response = Plugin.plugin.Config.Translations.NoRole;
             return false;
         }
 

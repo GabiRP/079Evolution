@@ -22,13 +22,13 @@ namespace _079Evolution.Commands
             Player player = Player.Get((CommandSender) sender);
             if (player.Role != RoleType.Scp079)
             {
-                response = Plugin.plugin.Config.PluginTranslations.NoRole;
+                response = Plugin.plugin.Config.Translations.NoRole;
                 return false;
             }
             if (player.Role != RoleType.Scp079) { response = "No puedes usar este comando si no eres SCP-079"; return false; }
-            if (!EventHandlers.Coold) { response = Plugin.plugin.Config.PluginTranslations.Cooldown; return false; }
-            if (player.Level < 1) { response = Plugin.plugin.Config.PluginTranslations.LvlEnergyMsg; return false; }
-            if (player.Energy < 60) { response = Plugin.plugin.Config.PluginTranslations.LvlEnergyMsg; return false; }
+            if (!EventHandlers.Coold) { response = Plugin.plugin.Config.Translations.Cooldown; return false; }
+            if (player.Level < 1) { response = Plugin.plugin.Config.Translations.LvlEnergyMsg; return false; }
+            if (player.Energy < 60) { response = Plugin.plugin.Config.Translations.LvlEnergyMsg; return false; }
             
             Cassie.Message(Plugin.plugin.Config.MtfCassie);
             player.Energy -= 60;
@@ -36,7 +36,7 @@ namespace _079Evolution.Commands
             int p = (int)System.Environment.OSVersion.Platform;
             if ((p == 4) || (p == 6) || (p == 128)) MEC.Timing.RunCoroutine(EventHandlers.Cooldown0792(), MEC.Segment.Update);
             else MEC.Timing.RunCoroutine(EventHandlers.Cooldown0792(), 1);
-            response = Plugin.plugin.Config.PluginTranslations.MtfMsg;
+            response = Plugin.plugin.Config.Translations.MtfMsg;
             return true;
         }
     }

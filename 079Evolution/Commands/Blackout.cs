@@ -17,13 +17,13 @@ namespace _079Evolution.Commands
             
             Player player = Player.Get((CommandSender)sender);
             //Role, cooldown & Level/Energy Check
-            if (player.Role != RoleType.Scp079) { response = Plugin.plugin.Config.PluginTranslations.NoRole; return false; }
-            if (!EventHandlers.Cooldw) { response = Plugin.plugin.Config.PluginTranslations.Cooldown; return false; }
+            if (player.Role != RoleType.Scp079) { response = Plugin.plugin.Config.Translations.NoRole; return false; }
+            if (!EventHandlers.Cooldw) { response = Plugin.plugin.Config.Translations.Cooldown; return false; }
             //if (ev.Player.Energy < 100 || ev.Player.Level < 3) { ev.ReturnMessage = "Necesitas Tier 3 y 100 de energia para usar este comando"; return; }
-            if(player.Level < 2) { response = Plugin.plugin.Config.PluginTranslations.LvlEnergyMsg; return false;  }
-            if(player.Energy < 100) { response = Plugin.plugin.Config.PluginTranslations.LvlEnergyMsg; return false; }
+            if(player.Level < 2) { response = Plugin.plugin.Config.Translations.LvlEnergyMsg; return false;  }
+            if(player.Energy < 100) { response = Plugin.plugin.Config.Translations.LvlEnergyMsg; return false; }
             //Response
-            response = Plugin.plugin.Config.PluginTranslations.BlackoutMsg;
+            response = Plugin.plugin.Config.Translations.BlackoutMsg;
             //Event
             player.Energy -= 100;
             EventHandlers.Cooldw = false;

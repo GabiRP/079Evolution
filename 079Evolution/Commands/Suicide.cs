@@ -21,7 +21,7 @@ namespace _079Evolution.Commands
             if (ply.Role != RoleType.Scp079)
             {
                 Log.Debug("The player is not SCP-079", Plugin.plugin.Config.DebugEnabled);
-                response = Plugin.plugin.Config.PluginTranslations.NoRole;
+                response = Plugin.plugin.Config.Translations.NoRole;
                 return false;
             }
             IEnumerable<Player> enumerable = Player.List.Where(x => x.Team == Team.SCP);
@@ -31,11 +31,11 @@ namespace _079Evolution.Commands
                 Log.Debug("There's no more SCPs, sending SCP-079 to spectator", Plugin.plugin.Config.DebugEnabled);
                 Player player = pList[0];
                 player.SetRole(RoleType.Spectator);
-                response = Plugin.plugin.Config.PluginTranslations.SuicideMsg;
+                response = Plugin.plugin.Config.Translations.SuicideMsg;
                 return true;
             }
             Log.Debug("There's other SCPs, sending error message", Plugin.plugin.Config.DebugEnabled);
-            response = Plugin.plugin.Config.PluginTranslations.OtherScps;
+            response = Plugin.plugin.Config.Translations.OtherScps;
             return false;
 
         }
